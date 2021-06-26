@@ -1,15 +1,32 @@
 import { NavBar, MainContent } from './components';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { MuiThemeProvider } from "@material-ui/core";
-import { theme } from "./theme";
+import { Route, Switch, useHistory } from "react-router-dom";
+import { AuthContext } from './contexts';
+import React from 'react';
 
 const App = () => {
-  return <Router>
-    <MuiThemeProvider theme={theme}>
+
+  const { user } = React.useContext(AuthContext);
+  const history = useHistory();
+
+  React.useEffect(() => {
+    if (!user) {
+      history.push("/login");
+    }
+  }, [history, user])
+
+  return <Switch>
+    <Route path="/">
       <NavBar></NavBar>
       <MainContent></MainContent>
-    </MuiThemeProvider>
-  </Router>;
+    </Route>
+    <Route path="/login">
+
+    </Route>
+    <Route path="/signUp">
+
+    </Route>
+  </Switch>;
+
 }
 
 export default App;
