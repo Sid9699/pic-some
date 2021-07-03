@@ -1,4 +1,4 @@
-import { NavBar, MainContent } from './components';
+import { NavBar, MainContent, Login } from './components';
 import { Route, Switch, useHistory } from "react-router-dom";
 import { AuthContext } from './contexts';
 import React from 'react';
@@ -15,12 +15,12 @@ const App = () => {
   }, [history, user])
 
   return <Switch>
-    <Route path="/">
+    <Route exact path="/">
       <NavBar></NavBar>
       <MainContent></MainContent>
     </Route>
     <Route path="/login">
-
+      <Login />
     </Route>
     <Route path="/signUp">
 
