@@ -1,4 +1,4 @@
-import { NavBar, MainContent, Login } from './components';
+import { NavBar, MainContent, Login, SignUp } from './components';
 import { Route, Switch, useHistory } from "react-router-dom";
 import { AuthContext } from './contexts';
 import React from 'react';
@@ -10,7 +10,9 @@ const App = () => {
 
   React.useEffect(() => {
     if (!user) {
-      history.push("/login");
+      if (history.location.pathname !== "/signup") {
+        history.push("/login");
+      }
     }
   }, [history, user])
 
@@ -23,7 +25,7 @@ const App = () => {
       <Login />
     </Route>
     <Route path="/signUp">
-
+      <SignUp />
     </Route>
   </Switch>;
 
