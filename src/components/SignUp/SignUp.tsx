@@ -1,21 +1,21 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Paper, Typography, Container, TextField, Button, Link } from "@material-ui/core";
 import { useSignUpStyles } from './styles';
-import { auth } from '../../utils';
+import { auth } from '../../config';
 import { useHistory } from 'react-router-dom';
 
 export const SignUp: React.FC = () => {
 
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         email: "",
         password: ""
     });
-    const [error, setError] = React.useState(false);
+    const [error, setError] = useState(false);
 
     const classes = useSignUpStyles();
     const history = useHistory();
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (state.email === "") {
             setError(false);
         } else {
@@ -23,7 +23,7 @@ export const SignUp: React.FC = () => {
         }
     }, [state.email])
 
-    const handleChange = (key: "email" | "password") => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    const handleChange = (key: keyof typeof state) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setState(prevState => ({
             ...prevState,
             [key]: event.target.value
@@ -35,8 +35,12 @@ export const SignUp: React.FC = () => {
         return re.test(String(email).toLowerCase());
     }
 
-    const signUp = () => {
-        auth.createUserWithEmailAndPassword(state.email, state.password);
+    const signUp = async () => {
+        try {
+            await auth.createUserWithEmailAndPassword(state.email, state.password);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const login = () => {
@@ -47,15 +51,18 @@ export const SignUp: React.FC = () => {
         <Paper className={classes.paper}>
             <Typography className={classes.textColor} variant="h4">Hello Friend!</Typography>
             <TextField
-                variant="filled"
+                variant="outlined"
+                color="secondary"
                 fullWidth
                 placeholder="Email"
                 onChange={handleChange("email")}
                 error={error}
             />
             <TextField
-                variant="filled"
+                variant="outlined"
+                color="secondary"
                 fullWidth
+                typeof="password"
                 placeholder="Password"
                 onChange={handleChange("password")}
             />

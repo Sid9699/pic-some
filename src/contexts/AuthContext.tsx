@@ -1,17 +1,17 @@
-import React from 'react';
-import { auth } from "../utils";
+import { createContext, useEffect, useState } from 'react';
+import { auth } from "../config";
 import firebase from "firebase";
 import { IAuthContext } from "./interfaces";
 
-export const AuthContext = React.createContext<IAuthContext>({
+export const AuthContext = createContext<IAuthContext>({
     user: null
 });
 
 export const AuthProvider: React.FC = (props) => {
 
-    const [user, setUser] = React.useState<firebase.User | null>(null);
+    const [user, setUser] = useState<firebase.User | null>(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const unmount = auth.onAuthStateChanged((user) => {
             setUser(user);
         })

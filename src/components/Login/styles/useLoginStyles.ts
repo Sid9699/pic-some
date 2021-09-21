@@ -2,17 +2,9 @@ import { makeStyles } from "@material-ui/core";
 
 export const useLoginStyles = makeStyles(theme => ({
     "@global": {
-        html: {
-            height: "100%",
-            fontFamily: "Lato"
-        },
         body: {
             backgroundColor: theme.palette.primary.light,
-            height: "100%"
         },
-        "#root": {
-            height: "100%"
-        }
     },
     container: {
         height: "100%",
