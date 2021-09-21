@@ -1,17 +1,28 @@
-import { AppBar, Toolbar as MuitoolBar, Typography, withStyles } from "@material-ui/core";
+import { AppBar, Toolbar as MuitoolBar, Typography, withStyles, Link } from "@material-ui/core";
 import React from "react";
+import { auth } from '../../config';
 
 const Toolbar = withStyles({
     root: {
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        '& > *': {
+            cursor: 'pointer',
+        }
     }
 })(MuitoolBar)
 
-export const NavBar: React.FC = (props) => {
+export const NavBar: React.FC = () => {
+
+    const logOut = async () => {
+        await auth.signOut();
+    }
+
     return <AppBar data-testid="ps-navbar">
         <Toolbar>
             <Typography variant="h5">Pic Some</Typography>
-            {props.children}
+            <Link onClick={logOut} variant="h6" color="inherit" underline="none">
+                Log Out
+            </Link>
         </Toolbar>
     </AppBar>;
 }
