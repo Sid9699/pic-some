@@ -51,6 +51,7 @@ export const Login: React.FC = () => {
         <Paper className={classes.paper}>
             <Typography className={classes.textColor} variant="h4">Welcome Back</Typography>
             <TextField
+                className={classes.textField}
                 variant="outlined"
                 color="secondary"
                 fullWidth
@@ -59,6 +60,7 @@ export const Login: React.FC = () => {
                 error={error}
             />
             <TextField
+                className={classes.textField}
                 variant="outlined"
                 color="secondary"
                 fullWidth

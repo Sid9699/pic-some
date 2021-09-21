@@ -8,19 +8,14 @@ describe("SignUp Component tests", () => {
         expect(getByTestId("ps-signup")).toBeInTheDocument();
     })
 
-    test("should render Welcome Back message", () => {
+    test("should render Hello Friend! message", () => {
         const { getByText } = render(<SignUp />);
-        expect(getByText(/Welcome Back/i)).toBeInTheDocument();
+        expect(getByText(/Hello Friend!/i)).toBeInTheDocument();
     })
 
     test("should render Forgot password? message", () => {
         const { getByText } = render(<SignUp />);
-        expect(getByText(/Forgot password?/i)).toBeInTheDocument();
-    })
-
-    test("should render New here? SignUp. message", () => {
-        const { getByText } = render(<SignUp />);
-        expect(getByText(/SignUp/i)).toBeInTheDocument();
+        expect(getByText(/Already have an account\? Login./i)).toBeInTheDocument();
     })
 
 })

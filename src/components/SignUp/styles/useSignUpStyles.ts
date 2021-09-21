@@ -31,5 +31,17 @@ export const useSignUpStyles = makeStyles(theme => ({
     },
     textColor: {
         color: theme.palette.primary.contrastText
+    },
+    textField: {
+        '& .MuiOutlinedInput-colorSecondary.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(0, 0, 0, 0.23)',
+            borderWidth: 1
+        },
+        '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(0, 0, 0, 0.23)',
+        },
+        '& .MuiInputBase-input': {
+            color: 'rgba(0, 0, 0, 0.87)'
+        }
     }
 }))
