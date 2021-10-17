@@ -1,1 +1,1 @@
-export * from "./useLoginStyles";
+export * from './useLoginStyles';

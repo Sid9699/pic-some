@@ -1,40 +1,40 @@
 import { NavBar, MainContent, Login, SignUp } from './components';
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from 'react-router-dom';
 import { AuthContext } from './contexts';
 import { useContext, useEffect } from 'react';
-import { useGlobalStyles } from "./useGlobalStyles";
+import { useGlobalStyles } from './useGlobalStyles';
 
 const App = () => {
 
-  const { user } = useContext(AuthContext);
-  const history = useHistory();
+	const { user } = useContext(AuthContext);
+	const history = useHistory();
 
-  useGlobalStyles();
+	useGlobalStyles();
 
-  useEffect(() => {
-    console.log(user)
-    if (!user) {
-      if (history.location.pathname !== "/signup") {
-        history.push("/login");
-      }
-    } else {
-      history.push("/");
-    }
-  }, [history, user])
+	useEffect(() => {
+		console.log(user);
+		if (!user) {
+			if (history.location.pathname !== '/signup') {
+				history.push('/login');
+			}
+		} else {
+			history.push('/');
+		}
+	}, [history, user]);
 
-  return <Switch>
-    <Route exact path="/">
-      <NavBar />
-      <MainContent></MainContent>
-    </Route>
-    <Route path="/login">
-      <Login />
-    </Route>
-    <Route path="/signUp">
-      <SignUp />
-    </Route>
-  </Switch>;
+	return <Switch>
+		<Route exact path="/">
+			<NavBar />
+			<MainContent></MainContent>
+		</Route>
+		<Route path="/login">
+			<Login />
+		</Route>
+		<Route path="/signUp">
+			<SignUp />
+		</Route>
+	</Switch>;
 
-}
+};
 
 export default App;

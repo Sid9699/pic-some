@@ -1,1 +1,1 @@
-export * from "./useSignUpStyles";
+export * from './useSignUpStyles';
