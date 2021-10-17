@@ -71,10 +71,8 @@ export const SignUp: React.FC = () => {
             <Button fullWidth variant="outlined" onClick={signUp}>
                 <Typography variant="h6" color="textSecondary">Sign Up</Typography>
             </Button>
-            <Link onClick={login} href="">
-                <Typography className={classes.textColor} variant="h6">
-                    Already have an account? Login.
-                </Typography>
+            <Link onClick={login} color="inherit" variant="h6" underline="none">
+                Already have an account? Login.
             </Link>
         </Paper>
     </Container>;

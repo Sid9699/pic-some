@@ -49,7 +49,7 @@ export const Login: React.FC = () => {
 
     return <Container data-testid="ps-login" className={classes.container} maxWidth="xs">
         <Paper className={classes.paper}>
-            <Typography className={classes.textColor} variant="h4">Welcome Back</Typography>
+            <Typography variant="h4" color="inherit">Welcome Back</Typography>
             <TextField
                 className={classes.textField}
                 variant="outlined"
@@ -68,18 +68,14 @@ export const Login: React.FC = () => {
                 placeholder="Password"
                 onChange={handleChange("password")}
             />
-            <Link onClick={() => { }} href="#">
-                <Typography className={classes.textColor} variant="h6">
-                    Forgot password?
-                </Typography>
+            <Link onClick={() => { }} variant="h6" color="inherit" underline="none">
+                Forgot password?
             </Link>
             <Button fullWidth variant="outlined" onClick={login}>
                 <Typography variant="h6" color="textSecondary">Login</Typography>
             </Button>
-            <Link onClick={signUp} href="">
-                <Typography className={classes.textColor} variant="h6">
-                    New here? SignUp.
-                </Typography>
+            <Link onClick={signUp} variant="h6" color="inherit" underline="none">
+                New here? SignUp.
             </Link>
         </Paper>
     </Container>;

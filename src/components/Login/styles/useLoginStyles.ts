@@ -19,10 +19,10 @@ export const useLoginStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "center",
         padding: 20,
-        gap: 16
-    },
-    textColor: {
-        color: theme.palette.primary.contrastText
+        gap: 16,
+        '& > a': {
+            cursor: 'pointer'
+        }
     },
     textField: {
         '& .MuiOutlinedInput-colorSecondary.Mui-focused .MuiOutlinedInput-notchedOutline': {
